@@ -365,6 +365,9 @@ def get_api(request, snippet):
     else:
       from notebook.connectors.jdbc_teradata import JdbcApiTeradata
       return JdbcApiTeradata(request.user, interpreter=interpreter)
+  elif interface == 'presto':
+    from notebook.connectors.presto import PrestoApi
+    return PrestoApi(request.user, interpreter=interpreter)
   elif interface == 'teradata':
     from notebook.connectors.jdbc import JdbcApiTeradata
     return JdbcApiTeradata(request.user, interpreter=interpreter)
